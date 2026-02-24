@@ -3,67 +3,457 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>האתר שלי</title>
+  <title>האתר הראשון שלי ✨</title>
+  <meta name="description" content="האתר הראשון שלי — חלום להיות עצמאית ולהקים עסק משלי. מרגש, אסתטי, יפה ומתאים לאופי שלי." />
+
+  <!-- Fonts (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body{font-family:Arial; margin:0; background:#f7f7f7; color:#111; direction:rtl}
-    header{padding:48px 16px; background:white; border-bottom:1px solid #e6e6e6; text-align:center}
-    h1{margin:0 0 8px}
-    p{margin:0 0 16px; line-height:1.6}
-    .container{max-width:900px; margin:0 auto; padding:24px 16px}
-    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
-    .card{background:white; padding:16px; border:1px solid #eee; border-radius:12px}
-    .btn{display:inline-block; padding:10px 14px; border-radius:10px; background:#111; color:#fff; text-decoration:none}
-    footer{padding:18px; text-align:center; color:#666}
-    input, textarea{width:100%; padding:10px; border-radius:10px; border:1px solid #ddd; font-size:16px}
-    label{display:block; margin:10px 0 6px}
-    form{background:white; padding:16px; border:1px solid #eee; border-radius:12px}
+    :root{
+      --bg1:#fff6fb;
+      --bg2:#fff0f8;
+      --ink:#1b1b22;
+      --muted:#5b5b66;
+
+      --rose:#ff4fa3;
+      --rose2:#ff7ec0;
+      --rose3:#ffd2e8;
+
+      --card:#ffffffcc;
+      --stroke:#ffffff70;
+
+      --shadow: 0 18px 50px rgba(18,18,22,.10);
+      --shadow2: 0 10px 24px rgba(18,18,22,.08);
+
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+
+      --max: 1020px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Heebo", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 500px at 15% 5%, rgba(255,79,163,.18), transparent 55%),
+        radial-gradient(800px 450px at 85% 10%, rgba(255,126,192,.14), transparent 50%),
+        radial-gradient(700px 420px at 50% 85%, rgba(255,210,232,.35), transparent 58%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* classy glitter overlay */
+    .glitter{
+      pointer-events:none;
+      position:fixed;
+      inset:0;
+      opacity:.26;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9) 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,.75) 0 1px, transparent 2px),
+        radial-gradient(circle at 60% 35%, rgba(255,255,255,.7) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 65%, rgba(255,255,255,.8) 0 1px, transparent 2px),
+        radial-gradient(circle at 92% 25%, rgba(255,255,255,.8) 0 1px, transparent 2px);
+      background-size: 220px 220px, 260px 260px, 240px 240px, 280px 280px, 300px 300px;
+      filter: blur(.2px);
+      mix-blend-mode: soft-light;
+      animation: shimmer 9s ease-in-out infinite;
+    }
+    @keyframes shimmer{
+      0%,100%{transform: translateY(0) translateX(0)}
+      50%{transform: translateY(-10px) translateX(8px)}
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 64px;}
+    header{
+      position:relative;
+      margin-top: 10px;
+      padding: 30px 18px 10px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--ink);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .seal{
+      width:40px; height:40px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.9), rgba(255,255,255,.2) 55%, transparent 70%),
+        linear-gradient(135deg, rgba(255,79,163,.9), rgba(255,126,192,.75));
+      box-shadow: var(--shadow2);
+      border: 1px solid rgba(255,255,255,.7);
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-inline-start: 12px;
+      font-weight:500;
+    }
+    nav a:hover{color:var(--ink)}
+
+    .hero{
+      margin-top: 18px;
+      border-radius: var(--radius-xl);
+      padding: 28px 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.35));
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(700px 240px at 12% 20%, rgba(255,79,163,.22), transparent 60%),
+        radial-gradient(600px 240px at 88% 40%, rgba(255,126,192,.18), transparent 60%);
+      pointer-events:none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      position:relative;
+      z-index:1;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns: 1fr}
+      nav{display:none}
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,79,163,.10);
+      border: 1px solid rgba(255,79,163,.18);
+      color: rgba(27,27,34,.85);
+      font-weight:500;
+      width: fit-content;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(180deg, var(--rose), var(--rose2));
+      box-shadow: 0 0 0 6px rgba(255,79,163,.10);
+    }
+
+    h1{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(34px, 4.2vw, 52px);
+      line-height: 1.05;
+      margin: 14px 0 10px;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color:var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      max-width: 54ch;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:700;
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow2);
+      transition: transform .12s ease, filter .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.01)}
+    .btnPrimary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--rose), var(--rose2));
+      border-color: rgba(255,255,255,.45);
+    }
+    .btnGhost{
+      color: var(--ink);
+      background: rgba(255,255,255,.65);
+    }
+
+    .sideCard{
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.40));
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .quote{
+      font-family:"Playfair Display", serif;
+      font-size: 22px;
+      line-height: 1.35;
+      margin: 0 0 10px;
+    }
+    .small{
+      color: var(--muted);
+      line-height:1.7;
+      margin:0;
+    }
+    .sparkline{
+      margin-top: 14px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,79,163,.0), rgba(255,79,163,.55), rgba(255,126,192,.25), rgba(255,79,163,.0));
+      filter: blur(.2px);
+      opacity:.8;
+    }
+
+    section{margin-top: 18px;}
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 860px){
+      .cards{grid-template-columns: 1fr}
+    }
+    .card{
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(8px);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .card p{margin:0; color:var(--muted); line-height:1.75}
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,79,163,.35), transparent);
+      margin: 22px 0;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){ .about{grid-template-columns: 1fr;} }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(255,255,255,.75);
+      color: rgba(27,27,34,.85);
+      font-weight:600;
+      width: fit-content;
+      box-shadow: var(--shadow2);
+    }
+
+    .contact{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(255,79,163,.10), rgba(255,255,255,.55));
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow2);
+    }
+    .contact p{margin:0; color:var(--muted); line-height:1.7}
+    footer{
+      text-align:center;
+      color: rgba(91,91,102,.9);
+      padding: 26px 0 6px;
+      font-size: 14px;
+    }
+    .tiny{font-size:12px; opacity:.85}
+
+    /* accessibility for motion */
+    @media (prefers-reduced-motion: reduce){
+      .glitter{animation:none}
+      .btn{transition:none}
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>שלום! אני אנה</h1>
-    <p>אני מכינה את האתר הראשון שלי :) .</p>
-    <a class="btn" href="#contact">דברו איתי</a>
-  </header>
+  <div class="glitter" aria-hidden="true"></div>
 
-  <main class="container">
-    <h2>אני מעוניינת להגשים את חלומותיי ולהקים עסק משלי</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>שירות 1</h3>
-        <p>תיאור קצר של השירות.</p>
-      </div>
-      <div class="card">
-        <h3>שירות 2</h3>
-        <p>עוד תיאור קצר.</p>
-      </div>
-      <div class="card">
-        <h3>שירות 3</h3>
-        <p>תיאור נוסף.</p>
-      </div>
-    </div>
+  <div class="wrap">
+    <header>
+      <div class="topbar">
+        <a class="brand" href="#top">
+          <span class="seal" aria-hidden="true"></span>
+          <span>האתר הראשון שלי</span>
+        </a>
 
-    <h2 style="margin-top:28px">קצת עליי</h2>
-    <div class="card">
-      <p>כאן תכתבי כמה שורות: ניסיון, מי את, למי זה מתאים, למה לבחור בך.</p>
-    </div>
-
-    <h2 id="contact" style="margin-top:28px">צור קשר</h2>
-    <!-- הכי פשוט: כפתור וואטסאפ. אפשר גם להוסיף טופס אמיתי אחר כך -->
-    <p>
-      <a class="btn" href="https://wa.me/9725XXXXXXXX" target="_blank" rel="noopener">שלחו לי וואטסאפ</a>
-    </p>
-
-    <form onsubmit="event.preventDefault(); alert('כרגע זה דמו 🙂 אפשר לחבר לטופס חינמי בשלב הבא.');">
-      <label>שם</label>
-      <input placeholder="איך קוראים לך?" />
-      <label>הודעה</label>
-      <textarea rows="4" placeholder="במה אפשר לעזור?"></textarea>
-      <div style="margin-top:10px">
-        <button class="btn" type="submit">שליחה</button>
+        <nav aria-label="ניווט">
+          <a href="#story">הסיפור</a>
+          <a href="#aesthetic">האסתטיקה</a>
+          <a href="#dream">החלום</a>
+          <a href="#contact">צור קשר</a>
+        </nav>
       </div>
-    </form>
-  </main>
+
+      <div class="hero" id="top">
+        <div class="grid">
+          <div>
+            <div class="kicker"><span class="dot" aria-hidden="true"></span>ורוד נצנצים — אבל בוגר, נקי ואלגנטי</div>
+
+            <h1>זה האתר הראשון שלי, והוא מרגש אותי ברמות ✨</h1>
+
+            <p class="lead">
+              בניתי את המקום הזה כדי להגיד בקול ברור: יש לי חלום להיות עצמאית ולהקים עסק משלי.
+              אני רוצה שהאתר ירגיש כמו אני — אסתטי, יפה, רגוע, עם נגיעת נצנוץ עדינה שמרימה.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn btnPrimary" href="#dream">בואו לחלום איתי</a>
+              <a class="btn btnGhost" href="#story">לקרוא את הסיפור</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="badge" title="טיפ קטן">
+              💗 טיפ קטן: אפשר לערוך כל טקסט כאן ב־GitHub ולהתאים את זה בדיוק לאופי שלך
+            </div>
+          </div>
+
+          <aside class="sideCard" aria-label="משפט השראה">
+            <p class="quote">״כשיש חלום — מתחילים. ואז הוא מתחיל לגדול איתך״</p>
+            <p class="small">
+              אני בתחילת הדרך, וזה בדיוק הקסם: כל עמוד פה הוא צעד קטן לעבר העסק שלי.
+              האתר הזה הוא ההוכחה שאני לא רק חולמת — אני גם עושה.
+            </p>
+            <div class="sparkline" aria-hidden="true"></div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="cards" id="story">
+        <div class="card">
+          <h3>הסיפור שלי</h3>
+          <p>
+            זה הפרויקט הראשון שלי — ואני גאה בו. רציתי מקום שירגיש אישי,
+            כזה שמספר על הדרך שלי בלב פתוח ובסטייל נקי.
+          </p>
+        </div>
+
+        <div class="card" id="aesthetic">
+          <h3>האסתטיקה</h3>
+          <p>
+            ורוד נצנצים יכול להיות גם אלגנטי: רקעים רכים, שכבות עדינות,
+            קימורים קלאסיים, וטיפוגרפיה שקטה שמרגישה איכות.
+          </p>
+        </div>
+
+        <div class="card" id="dream">
+          <h3>החלום</h3>
+          <p>
+            להיות עצמאית, להקים עסק משלי, וליצור משהו שמרגיש נכון לי.
+            האתר הזה הוא התחלה מרגשת — ואני כאן כדי להפוך את החלום לתוכנית.
+          </p>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="about" aria-label="עוד קצת עליי">
+        <div class="card">
+          <h3>מה תרצי לשים כאן בהמשך?</h3>
+          <p>
+            אפשר להוסיף כאן: שירותים שאת מציעה, תיק עבודות, המלצות, שאלות נפוצות,
+            ואפילו בלוג קטן. זה ממש קל — ואני יכולה לכתוב לך טקסטים מוכנים לכל חלק.
+          </p>
+          <p style="margin-top:10px">
+            כרגע זה אתר חלומי-מרגש, ובהמשך הוא יהפוך לאתר של עסק אמיתי.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>מילים שמתאימות לאופי שלי</h3>
+          <p>
+            מרגש • אסתטי • נקי • נשי • אלגנטי • איכותי • עם נצנוץ עדין
+          </p>
+          <div class="divider"></div>
+          <p class="small">
+            רוצה שאחליף את “האתר הראשון שלי” בשם שלך/שם העסק?
+            זה שינוי של שורה אחת בלבד.
+          </p>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="contact" id="contact" aria-label="יצירת קשר">
+        <div>
+          <h3 style="margin:0 0 6px; font-family:'Playfair Display', serif;">צור קשר</h3>
+          <p>
+            כרגע אפשר לשים כאן אינסטגרם / מייל / וואטסאפ.  
+            (אם תשלחי לי מה את מעדיפה — אוסיף כפתור מעוצב במקום)
+          </p>
+        </div>
+
+        <div class="ctaRow" style="margin:0">
+          <!-- החליפי את # בקישור אמיתי -->
+          <a class="btn btnPrimary" href="#" onclick="alert('שימי כאן קישור אמיתי (אינסטגרם/וואטסאפ/מייל) ואז זה יעבוד 🙂'); return false;">
+            ✨ לדבר איתי
+          </a>
+          <a class="btn btnGhost" href="#top">למעלה</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> האתר הראשון שלי • נבנה באהבה ובניצנוץ עדין ✨
+      <div class="tiny">נ.ב. אם תרצי — אני יכול גם להוסיף עמוד נוסף (למשל: “עליי”, “שירותים”, “גלריה”).</div>
+    </footer>
+  </div>
+
+  <script>
+    // year auto
+    document.getElementById("year").textContent = new Date().getFullYear();
 
   <footer>© האתר שלי</footer>
 </body>
