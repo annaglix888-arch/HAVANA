@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>האתר שלי</title>
+  <style>
+    body{font-family:Arial; margin:0; background:#f7f7f7; color:#111; direction:rtl}
+    header{padding:48px 16px; background:white; border-bottom:1px solid #e6e6e6; text-align:center}
+    h1{margin:0 0 8px}
+    p{margin:0 0 16px; line-height:1.6}
+    .container{max-width:900px; margin:0 auto; padding:24px 16px}
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
+    .card{background:white; padding:16px; border:1px solid #eee; border-radius:12px}
+    .btn{display:inline-block; padding:10px 14px; border-radius:10px; background:#111; color:#fff; text-decoration:none}
+    footer{padding:18px; text-align:center; color:#666}
+    input, textarea{width:100%; padding:10px; border-radius:10px; border:1px solid #ddd; font-size:16px}
+    label{display:block; margin:10px 0 6px}
+    form{background:white; padding:16px; border:1px solid #eee; border-radius:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>שלום! אני ___</h1>
+    <p>אני עוזר/ת ל___ להשיג ___.</p>
+    <a class="btn" href="#contact">דברו איתי</a>
+  </header>
+
+  <main class="container">
+    <h2>מה אני מציע/ה</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>שירות 1</h3>
+        <p>תיאור קצר של השירות.</p>
+      </div>
+      <div class="card">
+        <h3>שירות 2</h3>
+        <p>עוד תיאור קצר.</p>
+      </div>
+      <div class="card">
+        <h3>שירות 3</h3>
+        <p>תיאור נוסף.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:28px">קצת עליי</h2>
+    <div class="card">
+      <p>כאן תכתבי כמה שורות: ניסיון, מי את, למי זה מתאים, למה לבחור בך.</p>
+    </div>
+
+    <h2 id="contact" style="margin-top:28px">צור קשר</h2>
+    <!-- הכי פשוט: כפתור וואטסאפ. אפשר גם להוסיף טופס אמיתי אחר כך -->
+    <p>
+      <a class="btn" href="https://wa.me/9725XXXXXXXX" target="_blank" rel="noopener">שלחו לי וואטסאפ</a>
+    </p>
+
+    <form onsubmit="event.preventDefault(); alert('כרגע זה דמו 🙂 אפשר לחבר לטופס חינמי בשלב הבא.');">
+      <label>שם</label>
+      <input placeholder="איך קוראים לך?" />
+      <label>הודעה</label>
+      <textarea rows="4" placeholder="במה אפשר לעזור?"></textarea>
+      <div style="margin-top:10px">
+        <button class="btn" type="submit">שליחה</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>© האתר שלי</footer>
+</body>
+</html>
